@@ -1,0 +1,4 @@
+pref=%prefix%
+
+all:
+    gcc -o $(pref)exe $(pref).c
