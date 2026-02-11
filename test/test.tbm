@@ -1,3 +1,9 @@
+C_COMPILER(gcc)
+CPP_COMPILER(g++)
 
-all:
-	gcc -o $(target)$(prefix)exe $(prefix).c	
+CHECK_HEADER(stdio.h)
+
+FILES(*.c)
+FILES(*.cpp)
+
+OUTPUT(%prefix%-test)
