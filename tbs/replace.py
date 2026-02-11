@@ -24,15 +24,31 @@ def ReplaceFile(instance: Instance, file: str):
         template.truncate()
         template.writelines(lines)
 
+def TemplatedBuild(inst: Instance,dir):
+    template = f"{dir}:\n\t$(MAKE) -C {dir} target={os.path.abspath(inst.env["target"])} prefix={inst.env["prefix"]}"
+    return template
+
+def NextSector(file):
+    file.write("\n\n")
+
 def StartReplacing(instance: Instance):
     if instance.configure == False:
         print("Skipping Replace of GenConf Mode")
         return
+
+    Phony = ".PHONY: "
+    allmmf: str  = "all: "
     with open("Makefile","w+") as mmf:
         for _,dir in enumerate(instance.templatedirs):
             files = glob.glob(f"{dir}/*.tbm")
             for _,file in enumerate(files):
                 ReplaceFile(instance,file)
-            mmf.write(dir)
+            Phony = Phony + f" {dir}"
+            allmmf = allmmf + f" {dir}"
+            mmf.write(TemplatedBuild(instance,dir))
+            NextSector(mmf)
+            mmf.write(allmmf)
+            NextSector(mmf)
+            mmf.write(Phony)
         
     

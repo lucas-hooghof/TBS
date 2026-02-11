@@ -2,7 +2,7 @@
 
 int main(int argc,char* argv[])
 {
-    printf("Hello from 67 land!\n");
+    printf("Hello from x86_64 land!\n");
 
-    return 0
+    return 0;
 }

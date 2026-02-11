@@ -1,4 +1,3 @@
-pref=%prefix%
 
 all:
-    gcc -o $(pref)exe $(pref).c
+	gcc -o $(target)$(prefix)exe $(prefix).c	

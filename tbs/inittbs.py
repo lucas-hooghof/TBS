@@ -42,5 +42,10 @@ def InitilizetbsInstance(cli: list[str] = []) -> Instance:
                     argp = arg.split(aarg)[1]
                     inst.env[aarg.split("--")[1].split("=")[0]]
 
+    if not "target" in inst.env:
+        print("Error: --target and --prefix have to be defined")
+    if not "prefix" in inst.env:
+        print("Error: --target and --prefix have to be defined")
+
     return inst
             
