@@ -7,6 +7,8 @@ class Instance:
         self.errorcode = 0
     def __str__(self):
         return f"ENV: {self.env},Directories: {self.dirs}"
+    def AddDirectory(self, dir: str) -> None:
+        self.dirs.append(dir)
 
 def CreateInstance(additionalenvs: list[str] = []) -> Instance:
     instance: Instance = Instance()
@@ -24,5 +26,5 @@ def CreateInstance(additionalenvs: list[str] = []) -> Instance:
                     env = arg.split("=")
                     instance.env[envs] = env[1]
 
-
+    instance.errorcode = 0
     return instance

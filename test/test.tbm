@@ -2,8 +2,10 @@ C_COMPILER(gcc)
 CPP_COMPILER(g++)
 
 CHECK_HEADER(stdio.h)
+CHECK_FUNCTION(printf_s stdio.h)
 
 FILES(*.c)
 FILES(*.cpp)
+INCLUDE(arch/%prefix%/)
 
 OUTPUT(%prefix%-test)
