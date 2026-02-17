@@ -3,9 +3,10 @@ CPP_COMPILER(g++)
 
 CHECK_HEADER(stdio.h)
 CHECK_FUNCTION(printf_s stdio.h)
+CHECK_FUNCTION_OPT(strncpy string.h)
 
 FILES(*.c)
 FILES(*.cpp)
-INCLUDE(arch/%prefix%/)
+FILES(arch/%prefix%/*.c)
 
 OUTPUT(%prefix%-test)
