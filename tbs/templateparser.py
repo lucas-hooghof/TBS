@@ -127,6 +127,16 @@ class TemplateParser:
     def AddTemplate(self, filename):
         self.templates.append(Template(filename))
 
+    def ParseTemplates(self):
+        for template in self.templates:
+            self.ParseTemplate(template)
+    
+    def __str__(self):
+        ostr = ""
+        for template in self.templates:
+            ostr += template.__str__()
+            ostr += "\n"
+
     def ParseTemplate(self, template: Template):
         with open(template.file, "r") as t:
             lines = t.readlines()
@@ -167,5 +177,7 @@ class TemplateParser:
                 pattern = match.group(1).strip()
                 template.file_patterns.append(pattern)
                 print(f"Found file pattern: {pattern}")
+            elif match := re.match(r"OUTPUT\(([^)]+)\)",line):
+                template.outputname = match.group(1)
 
         print(template)
