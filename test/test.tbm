@@ -2,8 +2,8 @@ C_COMPILER(gcc)
 CPP_COMPILER(g++)
 
 CHECK_HEADER(stdio.h)
-CHECK_FUNCTION(printf_s stdio.h)
-CHECK_FUNCTION_OPT(strncpy string.h)
+CHECK_FUNCTION(printf stdio.h)
+CHECK_FUNCTION_OPT(strcpy string.h)
 
 FILES(*.c)
 FILES(*.cpp)

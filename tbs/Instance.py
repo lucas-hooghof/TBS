@@ -1,8 +1,15 @@
 import sys
 
+class Argument:
+    def __init__(self,name: str,flag: str,type: str = "string"):
+        self.name = name
+        self.flag = flag
+        self.type = type
+
+
 class Instance:
     def __init__(self):
-        self.env = []
+        self.env: list[Argument] = []
         self.dirs = []
         self.errorcode = 0
     def __str__(self):
@@ -10,13 +17,14 @@ class Instance:
     def AddDirectory(self, dir: str) -> None:
         self.dirs.append(dir)
 
-def CreateInstance(additionalenvs: list[str] = []) -> Instance:
+def CreateInstance(arguments: list[Argument] = []) -> Instance:
     instance: Instance = Instance()
-    instance.env.append("prefix")
-    instance.env.append("target")
 
-    for env in additionalenvs:
-        instance.env.append(env)
+    instance.env.append(Argument("prefix","--prefix","string"))
+    instance.env.append(Argument("target","--target","string"))
+
+    for argument in arguments:
+        instance.env.append(argument)
 
     instance.errorcode = 0
     return instance

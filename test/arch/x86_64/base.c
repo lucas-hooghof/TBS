@@ -4,5 +4,5 @@
 
 void Hello()
 {
-    printf("Hello From i686");
+    printf("Hello From x86_64");
 }
