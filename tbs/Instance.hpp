@@ -4,12 +4,8 @@
 #include <string>
 #include <tuple>
 
-class Instance
+struct Instance
 {
-public:
-    Instance() = default;
-    ~Instance() = default;
-
     std::vector<std::tuple<std::string,std::string,std::string>> Flags;
     std::vector<std::string> dirs;
 };
