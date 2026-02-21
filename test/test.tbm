@@ -7,6 +7,6 @@ CHECK_FUNCTION_OPT(strcpy string.h)
 
 FILES(*.c)
 FILES(*.cpp)
-FILES(arch/%prefix%/*.c)
+FILES(arch/%target%/*.c)
 
-OUTPUT(%prefix%-test)
+OUTPUT(%target%-test)

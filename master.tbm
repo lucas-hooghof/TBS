@@ -1,0 +1,8 @@
+TITLE(tests)
+
+FLAG(prefix --prefix= string)
+FLAG(target --target= string)
+
+ADD_DIR(test)
+DEPS_DIR(test deps)
+
